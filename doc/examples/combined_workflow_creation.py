@@ -93,10 +93,10 @@ found when globbin the input parameters.
 
 In the ``IOIterator`` loop you can see how we create a new ``NLMeans`` workflow
 then run it using ``self.run_sub_flow``. Running it this way will pass any
-workflow specific parameter that was retreived from the command line and will
+workflow specific parameter that was retrieved from the command line and will
 append the ones you specify as optional parameters (``out_dir`` in this case).
 
-Lastly, the outputs paths are retrived using
+Lastly, the outputs paths are retrieved using
 ``workflow.last_generated_outputs``. This allows to use ``denoise`` as the
 input for the ``MedianOtsuFlow``.
 """
@@ -114,8 +114,8 @@ This is the method that will wrap everything that is needed to make a workflow
 ready then run it.
 """
 
-if __name__ == "__main__":
-    run_flow(DenoiseAndSegment())
+# if __name__ == "__main__":
+#     run_flow(DenoiseAndSegment())
 """
 This is the only thing needed to make your workflow available through command
 line.

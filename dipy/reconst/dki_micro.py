@@ -98,7 +98,7 @@ def diffusion_components(dki_params, sphere='repulsion100', awf=None,
     Notes
     -----
     In the original article of DKI microstructural model [1]_, the hindered and
-    restricted tensors were definde as the intra-cellular and extra-cellular
+    restricted tensors were defined as the intra-cellular and extra-cellular
     diffusion compartments respectively.
 
     References
@@ -211,7 +211,7 @@ def dkimicro_prediction(params, gtab, S0=1):
     compartment (also known as the axonal water fraction).
 
     2) In the original article of DKI microstructural model [1]_, the hindered
-    and restricted tensors were definde as the intra-cellular and
+    and restricted tensors were defined as the intra-cellular and
     extra-cellular diffusion compartments respectively.
     """
 
@@ -375,8 +375,7 @@ class KurtosisMicrostructureModel(DiffusionKurtosisModel):
         data_in_mask = np.maximum(data_in_mask, self.min_signal)
 
         # DKI fit
-        dki_params = self.fit_method(self.design_matrix, data_in_mask,
-                                     *self.args, **self.kwargs)
+        dki_params = super().fit(data_in_mask).model_params
 
         # Computing awf
         awf = axonal_water_fraction(dki_params, sphere=sphere, gtol=gtol)
@@ -424,7 +423,7 @@ class KurtosisMicrostructureModel(DiffusionKurtosisModel):
         Notes
         -----
         In the original article of DKI microstructural model [1]_, the hindered
-        and restricted tensors were definde as the intra-cellular and
+        and restricted tensors were defined as the intra-cellular and
         extra-cellular diffusion compartments respectively.
 
         References
@@ -461,7 +460,7 @@ class KurtosisMicrostructuralFit(DiffusionKurtosisFit):
         Notes
         -----
         In the original article of DKI microstructural model [1]_, the hindered
-        and restricted tensors were definde as the intra-cellular and
+        and restricted tensors were defined as the intra-cellular and
         extra-cellular diffusion compartments respectively.
 
         References

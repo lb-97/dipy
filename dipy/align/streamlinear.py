@@ -1016,7 +1016,7 @@ def slr_with_qbx(static, moving,
         rigid, similarity or affine transformation model (default affine)
 
     rm_small_clusters : int, optional
-        Remove clusters that have less than `rm_small_clusters` (default 50)
+        Remove clusters that have less than `rm_small_clusters`
 
     maxiter : int, optional
         Maximum number of iterations to perform.
@@ -1128,6 +1128,15 @@ def slr_with_qbx(static, moving,
     if verbose:
         t = time()
 
+    if not len(qb_centroids1):
+        msg = "No cluster centroids found in Static Streamlines. Please "
+        msg += "decrease  the value of rm_small_clusters."
+        raise ValueError(msg)
+    if not len(qb_centroids2):
+        msg = "No cluster centroids found in Moving Streamlines. Please "
+        msg += "decrease the value of rm_small_clusters."
+        raise ValueError(msg)
+
     if not progressive:
         slr = StreamlineLinearRegistration(x0=x0,
                                            options={'maxiter': maxiter},
@@ -1195,7 +1204,7 @@ def groupwise_slr(bundles, x0='affine', tol=0, max_iter=20, qbx_thr=[4],
 
     select_random : int, optional
         Maximum number of streamlines for each bundle. If None, all the
-        streamlines are used. Deafult: 10000.
+        streamlines are used. Default: 10000.
 
     verbose : bool, optional
         If True, logs information. Default: False.
@@ -1264,7 +1273,7 @@ def groupwise_slr(bundles, x0='affine', tol=0, max_iter=20, qbx_thr=[4],
     d = group_distance(centroids, n_bundle)
 
     if verbose:
-        logging.info(f"Intial group distance: {np.mean(d)}.")
+        logging.info(f"Initial group distance: {np.mean(d)}.")
 
     # Make pairs and start iterating
     pairs, excluded = get_unique_pairs(n_bundle)
@@ -1324,7 +1333,7 @@ def groupwise_slr(bundles, x0='affine', tol=0, max_iter=20, qbx_thr=[4],
 def get_unique_pairs(n_bundle, pairs=None):
     """ Make unique pairs from n_bundle bundles.
 
-    The function allows to input a previous pairs asignment so that the new
+    The function allows to input a previous pairs assignment so that the new
     pairs are different.
 
     Parameters
