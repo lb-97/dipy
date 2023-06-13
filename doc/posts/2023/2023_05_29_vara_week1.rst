@@ -1,10 +1,13 @@
-GSOC 2023 week 1 blog
+Community bonding and Project kickstart : Week 1
+=======================================================
 
 .. post:: May 29 2023
      :author: Vara Lakshmi Bayanagari
      :tags: google
      :category: gsoc
 
+What I did this week
+~~~~~~~~~~~~~~~~~~~~
 
 Community Bonding period ended last week and my first blog is based on the work carried 
 out in the last week. My meeting with GSOC mentors at the start of the week helped me chalk
